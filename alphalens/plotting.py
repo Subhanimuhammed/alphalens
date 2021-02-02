@@ -228,7 +228,7 @@ def plot_ic_ts(ic, period,ax=None):
             "{} Period Forward Return Information Coefficient (IC)"
             .format(period_num))
         a.axhline(0.0, linestyle='-', color='black', lw=1, alpha=0.8)
-        a.legend(['IC', '1 month moving avg'], loc='upper right')
+        a.legend(['IC', '{0} period moving avg'.format(period)], loc='upper right')
         a.text(.05, .95, "Mean %.3f \n Std. %.3f" % (ic.mean(), ic.std()),
                fontsize=16,
                bbox={'facecolor': 'white', 'alpha': 1, 'pad': 5},
