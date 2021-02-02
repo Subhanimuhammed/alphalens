@@ -346,7 +346,7 @@ def create_returns_tear_sheet(
 
 @plotting.customize
 def create_information_tear_sheet(
-    factor_data, group_neutral=False, by_group=False
+    factor_data, group_neutral=False, by_group=False, ic_window
 ):
     """
     Creates a tear sheet for information analysis of a factor.
@@ -376,7 +376,7 @@ def create_information_tear_sheet(
     gf = GridFigure(rows=vertical_sections, cols=columns_wide)
 
     ax_ic_ts = [gf.next_row() for _ in range(fr_cols)]
-    plotting.plot_ic_ts(ic, ax=ax_ic_ts)
+    plotting.plot_ic_ts(ic, ic_window, ax=ax_ic_ts)
 
     ax_ic_hqq = [gf.next_cell() for _ in range(fr_cols * 2)]
     plotting.plot_ic_hist(ic, ax=ax_ic_hqq[::2])
@@ -489,7 +489,8 @@ def create_turnover_tear_sheet(factor_data, turnover_periods=None):
 def create_full_tear_sheet(factor_data,
                            long_short=True,
                            group_neutral=False,
-                           by_group=False):
+                           by_group=False,
+                           ic_window=21):
     """
     Creates a full tear sheet for analysis and evaluating single
     return predicting (alpha) factor.
@@ -521,7 +522,7 @@ def create_full_tear_sheet(factor_data,
         factor_data, long_short, group_neutral, by_group, set_context=False
     )
     create_information_tear_sheet(
-        factor_data, group_neutral, by_group, set_context=False
+        factor_data, group_neutral, by_group, set_context=False,ic_window
     )
     create_turnover_tear_sheet(factor_data, set_context=False)
 
