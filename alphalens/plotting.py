@@ -189,7 +189,7 @@ def plot_quantile_statistics_table(factor_data):
     utils.print_table(quantile_stats)
 
 
-def plot_ic_ts(ic, ax=None):
+def plot_ic_ts(ic, period,ax=None):
     """
     Plots Spearman Rank Information Coefficient and IC moving
     average for a given factor.
@@ -216,7 +216,7 @@ def plot_ic_ts(ic, ax=None):
     ymin, ymax = (None, None)
     for a, (period_num, ic) in zip(ax, ic.iteritems()):
         ic.plot(alpha=0.7, ax=a, lw=0.7, color='steelblue')
-        ic.rolling(window=22).mean().plot(
+        ic.rolling(window=period).mean().plot(
             ax=a,
             color='forestgreen',
             lw=2,
