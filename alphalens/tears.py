@@ -277,20 +277,20 @@ def create_returns_tear_sheet(
 
     # Compute cumulative returns from daily simple returns, if '1D'
     # returns are provided.
-    if "1D" in factor_returns:
+    for cols in factor_returns.columns:
         title = (
             "Factor Weighted "
             + ("Group Neutral " if group_neutral else "")
             + ("Long/Short " if long_short else "")
-            + "Portfolio Cumulative Return (1D Period)"
+            + "Portfolio Cumulative Return ({0} Period)".format(cols)
         )
 
         plotting.plot_cumulative_returns(
-            factor_returns["1D"], period="1D", title=title, ax=gf.next_row()
+            factor_returns[cols], period=cols, title=title, ax=gf.next_row()
         )
 
         plotting.plot_cumulative_returns_by_quantile(
-            mean_quant_ret_bydate["1D"], period="1D", ax=gf.next_row()
+            mean_quant_ret_bydate[cols], period=cols, ax=gf.next_row()
         )
 
     ax_mean_quantile_returns_spread_ts = [
