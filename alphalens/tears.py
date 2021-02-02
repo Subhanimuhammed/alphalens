@@ -346,7 +346,7 @@ def create_returns_tear_sheet(
 
 @plotting.customize
 def create_information_tear_sheet(
-    factor_data, group_neutral=False, by_group=False, ic_window
+    factor_data, ic_window,group_neutral=False, by_group=False 
 ):
     """
     Creates a tear sheet for information analysis of a factor.
@@ -522,7 +522,7 @@ def create_full_tear_sheet(factor_data,
         factor_data, long_short, group_neutral, by_group, set_context=False
     )
     create_information_tear_sheet(
-        factor_data, group_neutral, by_group, set_context=False,ic_window
+        factor_data,ic_window ,group_neutral, by_group,set_context=False
     )
     create_turnover_tear_sheet(factor_data, set_context=False)
 
